@@ -54,10 +54,11 @@ if ! command -v zoxide >/dev/null 2>&1; then
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 fi
 
-# --- 5. Starship ---
-if ! command -v starship >/dev/null 2>&1; then
-  log "Installing Starship"
-  curl -sS https://starship.rs/install.sh | sh -s -- --yes
+# --- 5. Starship (user-local, no sudo) ---
+if ! command -v starship >/dev/null 2>&1 && [ ! -x "$HOME/.local/bin/starship" ]; then
+  log "Installing Starship to ~/.local/bin"
+  mkdir -p "$HOME/.local/bin"
+  curl -sS https://starship.rs/install.sh | sh -s -- --yes --bin-dir "$HOME/.local/bin"
 fi
 
 # --- 6. Oh My Zsh ---
