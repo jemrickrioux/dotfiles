@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Block commits that contain secrets detected by gitleaks.
+set -e
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "gitleaks not installed — skipping secret scan. Install: brew install gitleaks"
+  exit 0
+fi
+
+gitleaks protect --staged --redact --verbose

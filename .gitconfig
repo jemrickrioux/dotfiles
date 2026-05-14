@@ -1,0 +1,12 @@
+[user]
+	email = 17281470+jemrickrioux@users.noreply.github.com
+	name = Jean-Emrick Rioux
+[init]
+	defaultBranch = main
+[http]
+	postBuffer = 157286400
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

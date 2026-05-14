@@ -1,0 +1,6 @@
+.zshrc.local
+*.local
+.env
+.env.*
+*.bak
+*.backup.*
